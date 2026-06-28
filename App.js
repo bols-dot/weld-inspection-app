@@ -7,6 +7,8 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import HomeScreen from './screens/HomeScreen';
 import AddTestScreen from './screens/AddTestScreen';
 import DetailScreen from './screens/DetailScreen';
+import CameraScreen from './screens/CameraScreen';
+import LogoHeader from './components/LogoHeader';
 import { WeldProvider } from './context/WeldContext';
 
 const Stack = createNativeStackNavigator();
@@ -16,13 +18,7 @@ function HomeStack() {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerStyle: {
-          backgroundColor: '#2196F3',
-        },
-        headerTintColor: '#fff',
-        headerTitleStyle: {
-          fontWeight: 'bold',
-        },
+        header: () => <LogoHeader />,
       }}
     >
       <Stack.Screen
@@ -33,7 +29,18 @@ function HomeStack() {
       <Stack.Screen
         name="Detail"
         component={DetailScreen}
-        options={{ title: 'Detaljer' }}
+        options={{
+          header: () => <LogoHeader />,
+          title: 'Detaljer',
+        }}
+      />
+      <Stack.Screen
+        name="Camera"
+        component={CameraScreen}
+        options={{
+          title: 'Ta foto',
+          headerShown: false,
+        }}
       />
     </Stack.Navigator>
   );
@@ -43,13 +50,7 @@ function AddTestStack() {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerStyle: {
-          backgroundColor: '#4CAF50',
-        },
-        headerTintColor: '#fff',
-        headerTitleStyle: {
-          fontWeight: 'bold',
-        },
+        header: () => <LogoHeader />,
       }}
     >
       <Stack.Screen
